@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { signOut } from "next-auth/react";
 // import NextAuth from "next-auth/next";
-// import { useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 
 export  default  function Blog(){
@@ -14,11 +14,12 @@ export  default  function Blog(){
     // const handleLogout = async () => {
     //     // NextAuth.signOut();
     //     await signOut()
-    //     router.push('/components/login');
+    //     // router.push('/components/login');
     //   };
 
-    const handleLogout = async () => {
-        await signOut()
+    const handleLogout = async (e) => {
+      e.preventDefault();
+        await signOut();
       };
 
 
@@ -30,8 +31,8 @@ const {data : session} = useSession();
         <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
           <div>
             <div className="flex items-center justify-between py-3 md:py-5 md:block">
-              <Link href= "#">
-                <h2 className="text-2xl text-white font-bold">Home</h2>
+              <Link href="/dashboard">
+                <h2 className="text-2xl text-white font-bold">Footrip</h2>
               </Link>
               <div className="md:hidden">
                 <button
@@ -89,30 +90,15 @@ const {data : session} = useSession();
                     My Blog
                   </Link>
                 </li>
+
                 <li className="text-white text-xl font-bold">
-                <Link href={"/components/login"} onClick={handleLogout} >Logout</Link>
+                <Link href={"/components/login"} onClick ={(e) => handleLogout(e.target.value)}>Logout</Link>
                 </li>
               </ul>
             </div>
           </div>
         </div>
       </nav>
-
-
-
-
-       {/* <div className="grid place-items-center h-screen">
-    <div className="shadow-lg p-8 bg-zince-300/10 flex flex-col gap-2 my-6 ">
-        <div>
-            Name : <span className="font-bold">{session?.user?.name}</span>
-        </div>
-        <div>
-            Email : <span className="font-bold">{session?.user?.email}</span>
-        </div>   
-
-    </div>
-       </div> */}
-
        </>
     )
 }

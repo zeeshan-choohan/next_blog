@@ -1,7 +1,4 @@
 import EditBlogForm from "@/app/components/editblogform/[editid]/page";
-
-export default function EditBlog(){
-    return(
-        <EditBlogForm/>
-    )
+export default async function EditBlog(){        
+    return<EditBlogForm  /> 
 }

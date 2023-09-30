@@ -10,6 +10,9 @@ const blogSchema = new Schema({
     imageUrl : {
         type : String,
     },
+    userUid : {
+        type : String,
+    },
 }, {timestamps : true})
 
 
